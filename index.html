@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DreamWrlld Graphix</title>
+    
+    <!-- Tailwind CSS for layout and responsive design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS for Cyberpunk / Neo-Brutalist Aesthetics -->
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
+            /* Cyberpunk subtle grid background */
+            background-image: 
+                linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Neo-brutalist accents */
+        .brutal-border {
+            border: 2px solid #ccff00; /* Neon Lime */
+            box-shadow: 6px 6px 0px #ccff00;
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .brutal-border:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0px #ccff00;
+        }
+
+        .brutal-btn {
+            border: 2px solid #ff00ff; /* Magenta */
+            box-shadow: 4px 4px 0px #ff00ff;
+            background-color: #050505;
+            color: #ff00ff;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .brutal-btn:hover, .brutal-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px #ff00ff;
+            background-color: #ff00ff;
+            color: #050505;
+        }
+
+        .accent-text-green { color: #ccff00; }
+        .accent-text-pink { color: #ff00ff; }
+
+        /* Chatbot Specific Styles */
+        #chat-window {
+            display: none; /* Hidden by default */
+            border: 2px solid #00ffff; /* Cyan */
+            box-shadow: -6px -6px 0px rgba(0, 255, 255, 0.2), 6px 6px 0px #00ffff;
+            background-color: #0a0a0a;
+        }
+        
+        #chat-messages {
+            font-family: monospace; /* Terminal vibe for chat */
+            scrollbar-width: thin;
+            scrollbar-color: #00ffff #050505;
+        }
+
+        .bot-msg {
+            color: #00ffff;
+            margin-bottom: 8px;
+        }
+        .user-msg {
+            color: #ccff00;
+            text-align: right;
+            margin-bottom: 8px;
+        }
+        
+        #chat-input-area {
+            border-top: 1px solid #333;
+        }
+        
+        #chat-input {
+            background: transparent;
+            color: white;
+            font-family: monospace;
+            outline: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="w-full p-6 flex justify-between items-center z-10 border-b border-gray-800 bg-black/80 backdrop-blur-sm fixed top-0">
+        <div class="text-2xl font-black tracking-tighter">
+            DREAMWRLLD <span class="accent-text-pink">GRAPHIX</span>
+        </div>
+        <nav class="hidden md:flex gap-6 font-bold text-sm tracking-widest">
+            <a href="#work" class="hover:text-[#ccff00] transition-colors">WORK</a>
+            <a href="#services" class="hover:text-[#ccff00] transition-colors">SERVICES</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="w-full pt-32 pb-20 px-6 flex flex-col items-center justify-center text-center mt-12">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-none mb-6">
+            Design that <br> <span class="accent-text-green">Disrupts</span>
+        </h1>
+        <p class="max-w-xl text-gray-400 text-lg md:text-xl mb-10">
+            High-impact visual identity, branding, and web design. We don't just make it look good; we make it impossible to ignore.
+        </p>
+        <button onclick="toggleChat()" class="brutal-btn px-8 py-4 text-lg">
+            Start a Project
+        </button>
+    </section>
+
+    <!-- Gallery / Work Section -->
+    <section id="work" class="w-full px-6 py-16 max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 border-b-2 border-[#ccff00] pb-4 inline-block">SELECTED WORKS</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Gallery Item 1 -->
+            <div class="brutal-border relative group overflow-hidden bg-gray-900 aspect-square">
+                <img src="https://placehold.co/600x600/111111/ccff00?text=BRAND+IDENTITY" alt="Brand Identity" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                <div class="absolute bottom-0 left-0 bg-black/90 p-4 w-full translate-y-full group-hover:translate-y-0 transition-transform">
+                    <h3 class="font-bold accent-text-green">CYBER-PUNK BRANDING</h3>
+                    <p class="text-sm text-gray-300">Logo & Identity Design</p>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 2 -->
+            <div class="brutal-border relative group overflow-hidden bg-gray-900 aspect-square">
+                <img src="https://placehold.co/600x600/111111/ff00ff?text=WEB+DESIGN" alt="Web Design" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                <div class="absolute bottom-0 left-0 bg-black/90 p-4 w-full translate-y-full group-hover:translate-y-0 transition-transform">
+                    <h3 class="font-bold accent-text-pink">E-COMMERCE UI/UX</h3>
+                    <p class="text-sm text-gray-300">Web Design</p>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 3 -->
+            <div class="brutal-border relative group overflow-hidden bg-gray-900 aspect-square">
+                <img src="https://placehold.co/600x600/111111/00ffff?text=ALBUM+ART" alt="Album Art" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                <div class="absolute bottom-0 left-0 bg-black/90 p-4 w-full translate-y-full group-hover:translate-y-0 transition-transform">
+                    <h3 class="font-bold text-[#00ffff]">SYNTHWAVE COVER</h3>
+                    <p class="text-sm text-gray-300">Digital Illustration</p>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 4 -->
+            <div class="brutal-border relative group overflow-hidden bg-gray-900 aspect-square">
+                <img src="https://placehold.co/600x600/111111/ff3333?text=MERCH+DESIGN" alt="Merch Design" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                <div class="absolute bottom-0 left-0 bg-black/90 p-4 w-full translate-y-full group-hover:translate-y-0 transition-transform">
+                    <h3 class="font-bold text-[#ff3333]">STREETWEAR APPAREL</h3>
+                    <p class="text-sm text-gray-300">Merchandise</p>
+                </div>
+            </div>
+
+             <!-- Gallery Item 5 -->
+             <div class="brutal-border relative group overflow-hidden bg-gray-900 aspect-square">
+                <img src="https://placehold.co/600x600/111111/ffffff?text=SOCIAL+MEDIA" alt="Social Media" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                <div class="absolute bottom-0 left-0 bg-black/90 p-4 w-full translate-y-full group-hover:translate-y-0 transition-transform">
+                    <h3 class="font-bold text-white">CAMPAIGN ASSETS</h3>
+                    <p class="text-sm text-gray-300">Social Media Kits</p>
+                </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div class="brutal-border relative group overflow-hidden bg-gray-900 aspect-square flex items-center justify-center p-8 text-center">
+                <div>
+                    <h3 class="text-2xl font-black mb-4">YOUR PROJECT<br>HERE</h3>
+                    <button onclick="toggleChat()" class="brutal-btn px-4 py-2 text-sm text-[#00ffff] border-[#00ffff] shadow-[4px_4px_0px_#00ffff]">
+                        INITIATE SEQUENCE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-gray-800 p-6 text-center text-gray-500 text-sm mt-auto">
+        <p>&copy; 2026 DreamWrlld Graphix. All rights reserved. Zero Compromise.</p>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <!-- Chat Toggle Button -->
+    <button id="chat-toggle-btn" onclick="toggleChat()" class="fixed bottom-6 right-6 w-16 h-16 bg-[#0a0a0a] border-2 border-[#00ffff] shadow-[4px_4px_0px_#00ffff] rounded-full flex items-center justify-center text-[#00ffff] text-2xl hover:bg-[#00ffff] hover:text-black transition-colors z-50">
+        <i class="fa-solid fa-comment-dots"></i>
+    </button>
+
+    <!-- Chat Window -->
+    <div id="chat-window" class="fixed bottom-24 right-6 w-[350px] max-w-[calc(100vw-3rem)] h-[450px] flex flex-col z-50 rounded-lg overflow-hidden">
+        <!-- Chat Header -->
+        <div class="bg-[#00ffff] text-black font-bold p-3 flex justify-between items-center">
+            <span><i class="fa-solid fa-robot mr-2"></i> DW Intake Terminal</span>
+            <button onclick="toggleChat()" class="text-black hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        
+        <!-- Chat Messages Area -->
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto flex flex-col gap-2">
+            <!-- Messages injected via JS -->
+        </div>
+
+        <!-- Chat Input Area -->
+        <div id="chat-input-area" class="p-3 bg-[#111] flex gap-2">
+            <input type="text" id="chat-input" placeholder="Type response..." class="flex-1 p-2 border border-gray-700 focus:border-[#00ffff]" onkeypress="handleKeyPress(event)">
+            <button onclick="processInput()" class="bg-[#00ffff] text-black px-4 font-bold hover:bg-white transition-colors">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chatbot Logic Script -->
+    <script>
+        // Chatbot State Variables
+        let chatStep = 0;
+        let clientData = {
+            name: "",
+            email: "",
+            projectType: "",
+            timeline: ""
+        };
+
+        const chatWindow = document.getElementById('chat-window');
+        const chatToggleBtn = document.getElementById('chat-toggle-btn');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+
+        // Toggle Chat Window Visibility
+        function toggleChat() {
+            if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+                chatWindow.style.display = 'flex';
+                chatToggleBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+                
+                // Initialize chat if it hasn't been started
+                if (chatStep === 0) {
+                    setTimeout(() => {
+                        botSpeak("SYSTEM ONLINE. Welcome to DreamWrlld Graphix.");
+                        setTimeout(() => {
+                            botSpeak("I'm the automated intake bot. To get started on a project, what is your name?");
+                        }, 800);
+                    }, 300);
+                }
+                chatInput.focus();
+            } else {
+                chatWindow.style.display = 'none';
+                chatToggleBtn.innerHTML = '<i class="fa-solid fa-comment-dots"></i>';
+            }
+        }
+
+        // Add Bot Message to UI
+        function botSpeak(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'bot-msg';
+            msgDiv.innerHTML = `> ${text}`;
+            chatMessages.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        // Add User Message to UI
+        function userSpeak(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'user-msg';
+            msgDiv.innerHTML = `${text} <`;
+            chatMessages.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Handle Enter Key
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                processInput();
+            }
+        }
+
+        // Process User Input based on current state (chatStep)
+        function processInput() {
+            const text = chatInput.value.trim();
+            if (!text) return; // Don't process empty input
+
+            userSpeak(text);
+            chatInput.value = ''; // Clear input
+
+            // Determine next bot action based on state
+            chatStep++;
+            
+            setTimeout(() => {
+                switch(chatStep) {
+                    case 1:
+                        clientData.name = text;
+                        botSpeak(`Nice to meet you, ${clientData.name}.`);
+                        setTimeout(() => botSpeak("What is the best email address to reach you?"), 600);
+                        break;
+                    case 2:
+                        // Very basic email validation check
+                        if(!text.includes('@')) {
+                            botSpeak("That doesn't look like a valid email. Please include an '@' symbol.");
+                            chatStep--; // Revert step to ask again
+                        } else {
+                            clientData.email = text;
+                            botSpeak("Email logged.");
+                            setTimeout(() => botSpeak("What type of project do you need? (e.g., Logo, Web Design, Branding)"), 600);
+                        }
+                        break;
+                    case 3:
+                        clientData.projectType = text;
+                        botSpeak("Excellent.");
+                        setTimeout(() => botSpeak("Finally, what is your estimated timeline or deadline for this project?"), 600);
+                        break;
+                    case 4:
+                        clientData.timeline = text;
+                        botSpeak("Processing your request...");
+                        
+                        // Simulate sending data and concluding
+                        setTimeout(() => {
+                            botSpeak(`INTAKE COMPLETE. Thank you, ${clientData.name}.`);
+                            setTimeout(() => {
+                                botSpeak(`Tim will review your request for a ${clientData.projectType} and will email you at ${clientData.email} within 24 hours to begin.`);
+                                // In a real scenario, this is where you would use an API like Formspree or EmailJS 
+                                // to actually send the 'clientData' object to your email inbox for free.
+                                chatInput.disabled = true;
+                                chatInput.placeholder = "Session ended.";
+                            }, 1500);
+                        }, 1000);
+                        break;
+                }
+            }, 500); // Simulate typing delay
+        }
+    </script>
+</body>
+</html>
