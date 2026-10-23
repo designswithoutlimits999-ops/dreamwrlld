@@ -191,6 +191,24 @@
         handleInput();
       }
     });
+    const toggleChat = document.getElementById("toggleChat");
+const toggleIcon = document.getElementById("toggleIcon");
+const chatContainerNode = document.querySelector(".chat-container");
+const chatInputContainer = chatInput.parentElement;
+
+toggleChat.addEventListener("click", function() {
+  if (chatBox.style.display === "none") {
+    chatBox.style.display = "flex";
+    chatInputContainer.style.display = "flex";
+    chatContainerNode.style.height = "450px";
+    toggleIcon.innerText = "-";
+  } else {
+    chatBox.style.display = "none";
+    chatInputContainer.style.display = "none";
+    chatContainerNode.style.height = "auto";
+    toggleIcon.innerText = "+";
+  }
+});
   </script>
 </body>
 </html>
