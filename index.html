@@ -84,18 +84,18 @@
   </main>
 
   <!-- Chatbot UI -->
-  <div class="chat-container">
-   <div class="bg-white text-black p-3 font-bold border-b-2 border-black flex justify-between items-center cursor-pointer hover:bg-gray-200 transition-colors" id="toggleChat">
-  <span>TASK BOT</span>
-  <div>
-    <span class="text-xs bg-black text-white px-2 py-1 uppercase mr-3">Online</span>
-    <span id="toggleIcon" class="font-black text-xl leading-none">-</span>
-  </div>
-</div>
+  <div class="chat-container" id="chatContainerNode">
+    <div class="bg-white text-black p-3 font-bold border-b-2 border-black flex justify-between items-center cursor-pointer hover:bg-gray-200 transition-colors" id="toggleChat">
+      <span>TASK BOT</span>
+      <div>
+        <span class="text-xs bg-black text-white px-2 py-1 uppercase mr-3">Online</span>
+        <span id="toggleIcon" class="font-black text-xl leading-none">-</span>
+      </div>
+    </div>
     <div id="chatBox" class="chat-box text-sm">
       <div class="msg-bot">System initialized. Welcome to DreamWrlld Graphix. I am the Task Bot. What is your name?</div>
     </div>
-    <div class="border-t-2 border-white flex p-2 bg-black">
+    <div id="chatInputContainer" class="border-t-2 border-white flex p-2 bg-black">
       <input id="chatInput" type="text" class="flex-grow bg-transparent text-white outline-none p-2 placeholder-gray-500" placeholder="Type your answer...">
       <button id="chatSubmit" class="bg-white text-black font-bold px-4 py-2 hover:bg-[#00ffcc] transition-colors">SEND</button>
     </div>
@@ -104,9 +104,28 @@
   <script>
     emailjs.init("Cxf1kmjkVg5P31DVM");
 
+    const chatContainerNode = document.getElementById("chatContainerNode");
     const chatBox = document.getElementById("chatBox");
+    const chatInputContainer = document.getElementById("chatInputContainer");
     const chatInput = document.getElementById("chatInput");
     const chatSubmit = document.getElementById("chatSubmit");
+    const toggleChat = document.getElementById("toggleChat");
+    const toggleIcon = document.getElementById("toggleIcon");
+
+    // Minimize Toggle Logic
+    toggleChat.addEventListener("click", function() {
+      if (chatBox.style.display === "none") {
+        chatBox.style.display = "flex";
+        chatInputContainer.style.display = "flex";
+        chatContainerNode.style.height = "450px";
+        toggleIcon.innerText = "-";
+      } else {
+        chatBox.style.display = "none";
+        chatInputContainer.style.display = "none";
+        chatContainerNode.style.height = "auto";
+        toggleIcon.innerText = "+";
+      }
+    });
 
     let step = 0;
     const clientData = {
@@ -191,24 +210,6 @@
         handleInput();
       }
     });
-    const toggleChat = document.getElementById("toggleChat");
-const toggleIcon = document.getElementById("toggleIcon");
-const chatContainerNode = document.querySelector(".chat-container");
-const chatInputContainer = chatInput.parentElement;
-
-toggleChat.addEventListener("click", function() {
-  if (chatBox.style.display === "none") {
-    chatBox.style.display = "flex";
-    chatInputContainer.style.display = "flex";
-    chatContainerNode.style.height = "450px";
-    toggleIcon.innerText = "-";
-  } else {
-    chatBox.style.display = "none";
-    chatInputContainer.style.display = "none";
-    chatContainerNode.style.height = "auto";
-    toggleIcon.innerText = "+";
-  }
-});
   </script>
 </body>
 </html>
